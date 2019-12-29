@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    #temp {
+
+        width: 50%;
+        height: 300px;
+        margin: 5%;
+
+    }
+
+    #currencyConv {
+
+        width: 50%;
+        height: 300px;
+        margin: 5%;
+    }
+
+    #calc {
+        width: 50%;
+        margin: 5%;
+    }
+
+    #resultat {
+        width: 93%;
+    }
+
+    #calculatrice div {
+        width: 50px;
+        height: 50px;
+        background-color: lightgray;
+        display: inline-block;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 20px;
+        border: 1px solid black;
+        margin: 2px;
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="temp" class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h1 class="card-title">Temperature Converter</h1>
+                        <h6 class="card-subtitle mb-2 text-muted">Enter Temp In Celcius</h6>
+                        <input id="inp" type="text">
+                        <p id="para"> </p>
+                        <button id="btn" onclick="convert()" type="button" class="btn btn-success">Convert</button>
+                        <button id="btn2" type="button" class="btn btn-secondary">Restart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="currencyConv" class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h1 class="card-title">Currency Converter</h1>
+                        <h6 class="card-subtitle mb-2 text-muted">Enter Amount In Euro</h6>
+                        <input id="inpu" type="text">
+                        <select id="curr">
+                            <option value="1.10">Dollar</option>
+                            <option value="7.84">RMB</option>
+                            <option value="0.89">Pound</option>
+                            <option value="80">Rupees</option>
+                        </select>
+                        <p id="result"></p>
+                        <button id="btn" onclick="convertC()" type="button" class="btn btn-success">Convert</button>
+                        <button id="btn2" type="button" class="btn btn-secondary">Restart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="calc" class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <div id="calculatrice">
+                            <h1 class="card-title">Calculator</h1>
+                            <input id="resultat"></input>
+                            <div onclick="clickNumber(event)">1</div>
+                            <div onclick="clickNumber(event)">2</div>
+                            <div onclick="clickNumber(event)">3</div>
+                            <div onclick="clickNumber(event)">4</div>
+                            <div onclick="clickNumber(event)">5</div>
+                            <div onclick="clickNumber(event)">6</div>
+                            <div onclick="clickNumber(event)">7</div>
+                            <div onclick="clickNumber(event)">8</div>
+                            <div onclick="clickNumber(event)">9</div>
+                            <div onclick="clickNumber(event)">0</div>
+                            <div onclick="clickNumber(event)">*</div>
+                            <div onclick="clickNumber(event)">/</div>
+                            <div onclick="clickNumber(event)">+</div>
+                            <div onclick="clickNumber(event)">-</div>
+                            <div onclick="egal()">=</div>
+                            <div onclick="nettoie()">C</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- with out bootstrap/ simple version-->
+
+    <!-- <div id="temp">
+        <h1>Temperature Converter</h1>
+        <label for="inp">Temperature in Celcius :</label>
+        <input id="inp" type="text">
+        <button id="btn" onclick="convert()">Convert</button>
+
+        <p id="para"> </p>
+    </div> -->
+
+    <!-- with out bootstrap/ simple version-->
+
+    <!-- 
+    <div id="currencyConv">
+        <h1>Currency Converter </h1>
+        <label for="inpu">Amount in Euro :</label>
+        <input id="inpu" type="number" placeholder="Enter an amount in euro">
+        <select id="curr">
+            <option value="1.10">Dollar</option>
+            <option value="7.84">RMB</option>
+            <option value="0.89">Pound</option>
+            <option value="80">Rupees</option>
+        </select>
+        <button onclick="convertC()">Convert</button>
+        <p id="result"></p>
+
+    </div> -->
+
+
+    <script type="text/javascript">
+
+
+        function convert() {
+            var input = document.getElementById('inp');
+            var paragraph = document.getElementById('para');
+            var result = (input.value * 9 / 5) + 32;
+
+            paragraph.innerHTML = "Temperature  : " + result;
+
+
+        }
+
+
+        function convertC() {
+            var input = document.getElementById('inpu').value;
+            var currency = document.getElementById('curr');
+            var rest = parseFloat(currency.value);
+            document.getElementById('result').innerHTML = "Currency rate : " + input * rest;
+
+        }
+
+        var resultat = document.getElementById("resultat");
+
+        function clickNumber(event) {
+            var v = event.target.innerText;
+            resultat.value += v;
+        }
+
+        function egal() {
+            var valeur = resultat.value;
+            valeur = eval(valeur);
+            resultat.value = valeur;
+        }
+
+        function nettoie() {
+            resultat.value = "";
+        }
+
+        var num = Math.random();
+var num2 = num*100;
+var nombre = Math.floor(num2);
+alert(nombre);
+
+var nombre2 = Math.round(Math.random()*100);
+alert(nombre2);
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

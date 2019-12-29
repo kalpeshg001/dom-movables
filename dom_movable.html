@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>PREMIERS PAS AVEC JS</title>
+</head>
+<style>
+    .carre {
+        width: 20px;
+        height: 20px;
+        background-color: blue;
+        position: absolute;
+    }
+
+    .cercle {
+        border-radius: 20px;
+        width: 20px;
+        height: 20px;
+        background-color: coral;
+        position: absolute;
+    }
+
+    .moveable {
+        position: absolute;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+        -khtml-user-select: none;
+        /* Konqueror HTML */
+        -moz-user-select: none;
+        /* Old versions of Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently */
+
+    }
+</style>
+
+<body>
+    <div class="cercle moveable"></div>
+    <div class="carre moveable"></div>
+    <h1 class="moveable" onmousedown="" onmousemove="" onmouseup="">Salut</h1>
+</body>
+<script type="text/javascript">
+
+    var move = document.getElementsByClassName("moveable");
+    console.log(move);
+
+    for (i = 0; i < move.length; i++) {
+        var move1 = move[i];
+        move1.onmousedown = moveImg;
+        move1.onmouseup = moveImg2;
+        move1.onmousemove = moveImg3;
+    }
+
+    var selected;
+
+    function moveImg(event) {
+        console.log(event.target);
+        selected = event.target;
+    }
+
+    function moveImg2(event) {
+        console.log(event.target);
+        selected = undefined;
+    }
+
+    function moveImg3(event) {
+        console.log(event.target);
+        if (selected != undefined) {
+            selected.style.top = event.y + "px";
+            selected.style.left = event.x + "px";
+        }
+    }
+
+    
+
+</script>
+
+</html>
